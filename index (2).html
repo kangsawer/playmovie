@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nonton Film Gratis</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .player-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #000a;
+    }
+
+    .player-image {
+      width: 100%;
+      display: block;
+    }
+
+    .fake-controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 5px;
+      background: #444;
+      margin: 0 10px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 30%;
+      height: 100%;
+      background: #e50914;
+    }
+
+    .play-btn-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .play-btn-overlay::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 22px;
+      width: 0;
+      height: 0;
+      border-left: 25px solid #fff;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+
+    .loading-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-size: 18px;
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+      flex-direction: column;
+    }
+
+    .ads {
+      margin-top: 30px;
+    }
+
+    .ads iframe {
+      width: 100%;
+      max-width: 300px;
+      height: 250px;
+      border: none;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Nonton Film: Petualangan Malam Jumat</h1>
+
+    <div class="player-wrapper" id="player">
+      <img class="player-image" src="https://i.ibb.co/0C4XKhT/poster-film.jpg" alt="Poster Film">
+
+      <div class="play-btn-overlay" onclick="startRedirect()"></div>
+
+      <div class="fake-controls">
+        <span>▶️ 00:00</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <span>01:45:00</span>
+      </div>
+
+      <div class="loading-overlay" id="loading">
+        <p>Loading film...</p>
+        <p>Mohon tunggu <span id="countdown">5</span> detik...</p>
+      </div>
+    </div>
+
+    <div class="ads">
+      <!-- Iklan -->
+      <iframe src="https://your-ads-link.com" title="Iklan"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 MovieXStream - Semua hak cipta dilindungi
+  </footer>
+
+  <script>
+    function startRedirect() {
+      const loading = document.getElementById('loading');
+      const countdownEl = document.getElementById('countdown');
+      let seconds = 5;
+
+      loading.style.display = 'flex';
+
+      const interval = setInterval(() => {
+        seconds--;
+        countdownEl.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          window.location.href = "https://example.com/redirect-ke-iklan";
+        }
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
